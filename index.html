@@ -23,35 +23,74 @@
     --border: #2d2d44;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; }
+  html { font-size: 16px; }
+  body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+  /* HEADER */
   .header {
     background: linear-gradient(135deg, #0f0f1a 0%, #1a1030 100%);
     border-bottom: 1px solid var(--border);
-    padding: 24px 40px;
+    padding: clamp(12px, 3vw, 24px) clamp(16px, 4vw, 40px);
     display: flex; align-items: center; justify-content: space-between;
     position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px);
+    gap: 10px;
   }
   .header h1 {
-    font-size: 22px; font-weight: 800;
+    font-size: clamp(15px, 3.5vw, 22px); font-weight: 800;
     background: linear-gradient(90deg, var(--accent), var(--gold));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 1px;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 1px; white-space: nowrap;
   }
-  .header-badge { background: var(--accent2); color: white; padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 700; }
-  .main { max-width: 1100px; margin: 0 auto; padding: 40px 20px 120px; }
+  .header-badge {
+    background: var(--accent2); color: white;
+    padding: clamp(4px, 1vw, 6px) clamp(10px, 2vw, 16px);
+    border-radius: 20px; font-size: clamp(11px, 2.5vw, 13px); font-weight: 700; white-space: nowrap;
+  }
+
+  /* MAIN */
+  .main { max-width: 1100px; margin: 0 auto; padding: clamp(20px, 4vw, 40px) clamp(12px, 3vw, 20px) 120px; }
+
+  /* STATS */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(10px, 2vw, 16px);
+    margin-bottom: clamp(24px, 4vw, 40px);
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: clamp(10px, 2vw, 14px); padding: clamp(14px, 3vw, 20px); text-align: center;
+  }
+  .stat-num { font-size: clamp(22px, 5vw, 32px); font-weight: 900; margin-bottom: 4px; }
+  .stat-label { font-size: clamp(10px, 2vw, 12px); color: var(--muted); font-weight: 600; }
+  .green-num { color: var(--green); }
+  .red-num { color: var(--red); }
+  .gold-num { color: var(--gold); }
+
+  /* SECTION TITLE */
   .section-title {
-    font-size: 13px; font-weight: 700; letter-spacing: 3px; color: var(--muted);
-    text-transform: uppercase; margin-bottom: 20px; margin-top: 40px;
+    font-size: clamp(10px, 2.5vw, 13px); font-weight: 700; letter-spacing: 3px;
+    color: var(--muted); text-transform: uppercase;
+    margin-bottom: clamp(14px, 3vw, 20px); margin-top: clamp(24px, 4vw, 40px);
     padding-bottom: 10px; border-bottom: 1px solid var(--border);
   }
-  .cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+    gap: clamp(12px, 2.5vw, 20px);
+  }
   .card {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-    padding: 22px; position: relative; transition: transform 0.2s, box-shadow 0.2s; overflow: hidden;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: clamp(12px, 2.5vw, 16px);
+    padding: clamp(16px, 3vw, 22px); position: relative;
+    transition: transform 0.2s, box-shadow 0.2s; overflow: hidden;
   }
   .card:hover { transform: translateY(-3px); box-shadow: 0 12px 40px rgba(124,92,191,0.15); }
   .card::before {
     content: ''; position: absolute; top: 0; right: 0;
-    width: 80px; height: 80px; border-radius: 0 16px 0 80px; opacity: 0.08;
+    width: 70px; height: 70px; border-radius: 0 16px 0 70px; opacity: 0.08;
   }
   .card.gold { border-color: rgba(240,180,41,0.4); }
   .card.gold::before { background: var(--gold); }
@@ -61,132 +100,152 @@
   .card.bronze::before { background: var(--bronze); }
   .card.rejected { border-color: rgba(252,92,92,0.2); opacity: 0.85; }
   .card.rejected::before { background: var(--red); }
-  .card-rank { font-size: 28px; font-weight: 900; margin-bottom: 4px; }
+  .card-rank { font-size: clamp(20px, 4vw, 28px); font-weight: 900; margin-bottom: 4px; }
   .gold .card-rank { color: var(--gold); }
   .silver .card-rank { color: var(--silver); }
   .bronze .card-rank { color: var(--bronze); }
-  .card-username { font-size: 17px; font-weight: 800; margin-bottom: 14px; color: white; display: flex; align-items: center; gap: 8px; }
-  .status-badge { font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; }
+  .card-username {
+    font-size: clamp(14px, 3vw, 17px); font-weight: 800; margin-bottom: 14px;
+    color: white; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .status-badge { font-size: clamp(10px, 2vw, 11px); font-weight: 700; padding: 3px 10px; border-radius: 20px; letter-spacing: 0.5px; }
   .badge-accepted { background: rgba(72,187,120,0.2); color: var(--green); border: 1px solid rgba(72,187,120,0.3); }
   .badge-rejected { background: rgba(252,92,92,0.15); color: var(--red); border: 1px solid rgba(252,92,92,0.3); }
   .badge-duplicate { background: rgba(240,180,41,0.15); color: var(--gold); border: 1px solid rgba(240,180,41,0.3); }
-  .card-info { display: flex; flex-direction: column; gap: 8px; font-size: 13px; color: var(--muted); }
-  .card-info-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; }
-  .card-info-label { font-weight: 700; color: var(--accent); white-space: nowrap; font-size: 12px; }
-  .card-info-value { color: var(--text); text-align: left; font-size: 13px; line-height: 1.5; }
+  .card-info { display: flex; flex-direction: column; gap: 8px; }
+  .card-info-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .card-info-label { font-weight: 700; color: var(--accent); white-space: nowrap; font-size: clamp(11px, 2vw, 12px); }
+  .card-info-value { color: var(--text); font-size: clamp(12px, 2.5vw, 13px); line-height: 1.5; text-align: left; }
   .reason-box {
     margin-top: 14px; background: var(--surface2); border-radius: 10px;
-    padding: 12px; font-size: 13px; line-height: 1.7; color: var(--text); border-right: 3px solid var(--accent);
+    padding: clamp(10px, 2vw, 12px); font-size: clamp(12px, 2.5vw, 13px);
+    line-height: 1.7; color: var(--text); border-right: 3px solid var(--accent);
   }
   .reason-box.red { border-right-color: var(--red); }
   .reason-box.gold-border { border-right-color: var(--gold); }
   .reason-title { font-size: 11px; font-weight: 800; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; }
+
+  /* ADMIN FLOAT BTN */
   .admin-float-btn {
-    position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
+    position: fixed; bottom: clamp(16px, 4vw, 30px); left: 50%; transform: translateX(-50%);
     background: linear-gradient(135deg, var(--accent2), var(--accent));
-    color: white; border: none; padding: 14px 36px; border-radius: 50px;
-    font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 800;
-    cursor: pointer; box-shadow: 0 8px 30px rgba(124,92,191,0.5);
-    transition: all 0.3s; letter-spacing: 1px; z-index: 200;
+    color: white; border: none; padding: clamp(12px, 2.5vw, 14px) clamp(24px, 5vw, 36px);
+    border-radius: 50px; font-family: 'Tajawal', sans-serif;
+    font-size: clamp(13px, 3vw, 15px); font-weight: 800; cursor: pointer;
+    box-shadow: 0 8px 30px rgba(124,92,191,0.5); transition: all 0.3s;
+    letter-spacing: 1px; z-index: 200; white-space: nowrap;
   }
   .admin-float-btn:hover { transform: translateX(-50%) translateY(-3px); box-shadow: 0 12px 40px rgba(124,92,191,0.7); }
+
+  /* MODAL */
   .modal-overlay {
     display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.85);
-    backdrop-filter: blur(6px); z-index: 300; align-items: center; justify-content: center;
+    backdrop-filter: blur(6px); z-index: 300; align-items: center; justify-content: center; padding: 16px;
   }
   .modal-overlay.show { display: flex; }
   .modal {
-    background: var(--surface); border: 1px solid var(--border); border-radius: 20px;
-    padding: 36px; width: 90%; max-width: 500px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: clamp(14px, 3vw, 20px);
+    padding: clamp(24px, 5vw, 36px); width: 100%; max-width: 500px;
     box-shadow: 0 30px 80px rgba(0,0,0,0.6); animation: modalIn 0.3s ease;
   }
   @keyframes modalIn { from { opacity: 0; transform: scale(0.92) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
-  .modal h2 { font-size: 20px; font-weight: 800; margin-bottom: 8px; color: white; }
-  .modal p { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+  .modal h2 { font-size: clamp(17px, 4vw, 20px); font-weight: 800; margin-bottom: 8px; color: white; }
+  .modal p { color: var(--muted); font-size: clamp(13px, 3vw, 14px); margin-bottom: 20px; }
   .modal input {
     width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
-    padding: 12px 16px; color: white; font-family: 'Tajawal', sans-serif; font-size: 15px;
-    margin-bottom: 16px; outline: none; transition: border-color 0.2s; text-align: center; letter-spacing: 3px;
+    padding: clamp(10px, 2.5vw, 12px) 16px; color: white; font-family: 'Tajawal', sans-serif;
+    font-size: clamp(14px, 3vw, 15px); margin-bottom: 16px; outline: none;
+    transition: border-color 0.2s; text-align: center; letter-spacing: 3px;
   }
   .modal input:focus { border-color: var(--accent); }
   .modal-err { color: var(--red); font-size: 13px; margin-bottom: 12px; display: none; text-align: center; }
   .modal-btns { display: flex; gap: 10px; }
   .btn-primary {
     flex: 1; background: linear-gradient(135deg, var(--accent2), var(--accent));
-    color: white; border: none; padding: 12px; border-radius: 10px;
-    font-family: 'Tajawal', sans-serif; font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity 0.2s;
+    color: white; border: none; padding: clamp(10px, 2.5vw, 12px); border-radius: 10px;
+    font-family: 'Tajawal', sans-serif; font-size: clamp(14px, 3vw, 15px); font-weight: 700; cursor: pointer; transition: opacity 0.2s;
   }
   .btn-primary:hover { opacity: 0.85; }
   .btn-cancel {
     background: var(--surface2); color: var(--muted); border: 1px solid var(--border);
-    padding: 12px 20px; border-radius: 10px; font-family: 'Tajawal', sans-serif; font-size: 15px; cursor: pointer; transition: color 0.2s;
+    padding: clamp(10px, 2.5vw, 12px) clamp(14px, 3vw, 20px); border-radius: 10px;
+    font-family: 'Tajawal', sans-serif; font-size: clamp(14px, 3vw, 15px); cursor: pointer; transition: color 0.2s;
   }
   .btn-cancel:hover { color: white; }
+
+  /* ADMIN PANEL */
   .admin-panel {
     display: none; position: fixed; inset: 0; background: var(--bg);
-    z-index: 400; overflow-y: auto; padding: 30px; animation: slideUp 0.4s ease;
+    z-index: 400; overflow-y: auto; padding: clamp(16px, 4vw, 30px); animation: slideUp 0.4s ease;
   }
   @keyframes slideUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
   .admin-panel.show { display: block; }
+  .admin-inner { max-width: 700px; margin: 0 auto; }
   .admin-header {
     display: flex; align-items: center; justify-content: space-between;
-    margin-bottom: 30px; padding-bottom: 20px; border-bottom: 1px solid var(--border);
+    margin-bottom: clamp(20px, 4vw, 30px); padding-bottom: 20px; border-bottom: 1px solid var(--border);
   }
   .admin-header h2 {
-    font-size: 22px; font-weight: 900;
+    font-size: clamp(17px, 4vw, 22px); font-weight: 900;
     background: linear-gradient(90deg, var(--gold), var(--accent));
     -webkit-background-clip: text; -webkit-text-fill-color: transparent;
   }
   .close-btn {
     background: var(--surface2); border: 1px solid var(--border); color: var(--muted);
-    width: 40px; height: 40px; border-radius: 50%; font-size: 18px; cursor: pointer;
-    transition: color 0.2s; display: flex; align-items: center; justify-content: center;
+    width: clamp(34px, 6vw, 40px); height: clamp(34px, 6vw, 40px); border-radius: 50%;
+    font-size: clamp(15px, 3vw, 18px); cursor: pointer; transition: color 0.2s;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
   }
   .close-btn:hover { color: white; }
-  .admin-section { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px; margin-bottom: 24px; }
-  .admin-section h3 { font-size: 15px; font-weight: 800; color: var(--accent); margin-bottom: 20px; letter-spacing: 1px; text-transform: uppercase; }
-  .form-group { margin-bottom: 16px; }
-  .form-label { display: block; font-size: 12px; font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
+  .admin-section {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: clamp(12px, 2.5vw, 16px); padding: clamp(18px, 4vw, 24px); margin-bottom: 20px;
+  }
+  .admin-section h3 {
+    font-size: clamp(12px, 2.5vw, 15px); font-weight: 800; color: var(--accent);
+    margin-bottom: clamp(14px, 3vw, 20px); letter-spacing: 1px; text-transform: uppercase;
+  }
+  .form-group { margin-bottom: clamp(12px, 2.5vw, 16px); }
+  .form-label { display: block; font-size: clamp(10px, 2vw, 12px); font-weight: 700; color: var(--muted); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 1px; }
   .form-input, .form-select, .form-textarea {
     width: 100%; background: var(--bg); border: 1px solid var(--border); border-radius: 10px;
-    padding: 10px 14px; color: white; font-family: 'Tajawal', sans-serif; font-size: 14px; outline: none; transition: border-color 0.2s;
+    padding: clamp(9px, 2vw, 10px) 14px; color: white; font-family: 'Tajawal', sans-serif;
+    font-size: clamp(13px, 2.5vw, 14px); outline: none; transition: border-color 0.2s;
   }
   .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--accent); }
   .form-select option { background: var(--surface); }
   .form-textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
-  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .form-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: clamp(10px, 2vw, 14px); }
   .save-btn {
     background: linear-gradient(135deg, var(--accent2), var(--accent)); color: white; border: none;
-    padding: 12px 30px; border-radius: 10px; font-family: 'Tajawal', sans-serif;
-    font-size: 15px; font-weight: 700; cursor: pointer; transition: opacity 0.2s; width: 100%; margin-top: 8px;
+    padding: clamp(11px, 2.5vw, 12px) 30px; border-radius: 10px; font-family: 'Tajawal', sans-serif;
+    font-size: clamp(14px, 3vw, 15px); font-weight: 700; cursor: pointer; transition: opacity 0.2s;
+    width: 100%; margin-top: 8px;
   }
   .save-btn:hover { opacity: 0.85; }
   .success-msg {
     display: none; background: rgba(72,187,120,0.15); border: 1px solid rgba(72,187,120,0.3);
     color: var(--green); padding: 12px; border-radius: 10px; text-align: center;
-    font-weight: 700; font-size: 14px; margin-top: 10px;
+    font-weight: 700; font-size: clamp(13px, 2.5vw, 14px); margin-top: 10px;
   }
-  .entry-list { display: flex; flex-direction: column; gap: 12px; }
+  .entry-list { display: flex; flex-direction: column; gap: 10px; }
   .entry-item {
     background: var(--bg); border: 1px solid var(--border); border-radius: 12px;
-    padding: 14px 18px; display: flex; align-items: center; justify-content: space-between; gap: 10px;
+    padding: clamp(12px, 2.5vw, 14px) clamp(14px, 3vw, 18px);
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
   }
-  .entry-name { font-weight: 800; font-size: 15px; }
-  .entry-meta { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  .entry-name { font-weight: 800; font-size: clamp(13px, 3vw, 15px); }
+  .entry-meta { font-size: clamp(11px, 2vw, 12px); color: var(--muted); margin-top: 2px; }
   .del-btn {
     background: rgba(252,92,92,0.15); border: 1px solid rgba(252,92,92,0.3); color: var(--red);
-    padding: 6px 14px; border-radius: 8px; font-family: 'Tajawal', sans-serif;
-    font-size: 13px; font-weight: 700; cursor: pointer; transition: background 0.2s; white-space: nowrap;
+    padding: clamp(5px, 1.5vw, 6px) clamp(10px, 2.5vw, 14px); border-radius: 8px;
+    font-family: 'Tajawal', sans-serif; font-size: clamp(12px, 2.5vw, 13px); font-weight: 700;
+    cursor: pointer; transition: background 0.2s; white-space: nowrap; flex-shrink: 0;
   }
   .del-btn:hover { background: rgba(252,92,92,0.3); }
-  .empty-msg { text-align: center; color: var(--muted); font-size: 14px; padding: 20px; }
-  .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 40px; }
-  .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 20px; text-align: center; }
-  .stat-num { font-size: 32px; font-weight: 900; margin-bottom: 4px; }
-  .stat-label { font-size: 12px; color: var(--muted); font-weight: 600; }
-  .green-num { color: var(--green); }
-  .red-num { color: var(--red); }
-  .gold-num { color: var(--gold); }
+  .empty-msg { text-align: center; color: var(--muted); font-size: clamp(13px, 2.5vw, 14px); padding: 20px; }
+
+  /* LOADING */
   .loading-overlay {
     position: fixed; inset: 0; background: var(--bg); z-index: 999;
     display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px;
@@ -197,33 +256,37 @@
   }
   @keyframes spin { to { transform: rotate(360deg); } }
   .loading-text { color: var(--muted); font-size: 14px; font-weight: 600; }
-  ::-webkit-scrollbar { width: 6px; }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 5px; }
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
-  @media (max-width: 600px) {
-    .form-row { grid-template-columns: 1fr; }
+
+  /* TOUCH FRIENDLY */
+  @media (hover: none) {
+    .card:hover { transform: none; box-shadow: none; }
+    .admin-float-btn:hover { transform: translateX(-50%); }
+  }
+
+  /* SMALL PHONES */
+  @media (max-width: 360px) {
     .stats-row { grid-template-columns: 1fr; }
-    .cards-grid { grid-template-columns: 1fr; }
-    .header { padding: 16px 20px; }
-    .main { padding: 20px 16px 120px; }
+    .modal-btns { flex-direction: column; }
   }
 </style>
 </head>
 <body>
 
-<!-- LOADING -->
 <div class="loading-overlay" id="loadingOverlay">
   <div class="spinner"></div>
   <div class="loading-text">جاري التحميل...</div>
 </div>
 
-<!-- HEADER -->
 <div class="header">
   <h1>🛡️ تقديمات الإدارة</h1>
   <div class="header-badge" id="totalBadge">0 تقديم</div>
 </div>
 
-<!-- MAIN -->
 <div class="main">
   <div class="stats-row">
     <div class="stat-card"><div class="stat-num green-num" id="statAccepted">0</div><div class="stat-label">✅ مقبولين</div></div>
@@ -240,7 +303,6 @@
 
 <button class="admin-float-btn" onclick="openLogin()">🔐 Admin Panel</button>
 
-<!-- LOGIN MODAL -->
 <div class="modal-overlay" id="loginModal">
   <div class="modal">
     <h2>🔐 لوحة الأدمن</h2>
@@ -254,67 +316,67 @@
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
 <div class="admin-panel" id="adminPanel">
-  <div class="admin-header">
-    <h2>⚙️ لوحة التحكم</h2>
-    <button class="close-btn" onclick="closeAdmin()">✕</button>
-  </div>
+  <div class="admin-inner">
+    <div class="admin-header">
+      <h2>⚙️ لوحة التحكم</h2>
+      <button class="close-btn" onclick="closeAdmin()">✕</button>
+    </div>
 
-  <div class="admin-section">
-    <h3>➕ إضافة تقديم</h3>
-    <div class="form-row">
-      <div class="form-group">
-        <label class="form-label">اسم اليوزر في روبلوكس</label>
-        <input class="form-input" id="fUsername" placeholder="مثال: GN_NWAF4">
+    <div class="admin-section">
+      <h3>➕ إضافة تقديم</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">اسم اليوزر في روبلوكس</label>
+          <input class="form-input" id="fUsername" placeholder="مثال: GN_NWAF4">
+        </div>
+        <div class="form-group">
+          <label class="form-label">العمر</label>
+          <input class="form-input" id="fAge" placeholder="مثال: 22" type="number">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">الساعات اليومية</label>
+          <input class="form-input" id="fHours" placeholder="مثال: 13 ساعة">
+        </div>
+        <div class="form-group">
+          <label class="form-label">الخبرة السابقة</label>
+          <input class="form-input" id="fExp" placeholder="مثال: سيرفر X و Y">
+        </div>
       </div>
       <div class="form-group">
-        <label class="form-label">العمر</label>
-        <input class="form-input" id="fAge" placeholder="مثال: 22" type="number">
+        <label class="form-label">الحالة</label>
+        <select class="form-select" id="fStatus" onchange="toggleRank()">
+          <option value="accepted">✅ مقبول</option>
+          <option value="rejected">❌ مرفوض</option>
+          <option value="duplicate">⚠️ مكرر / محذوف</option>
+        </select>
       </div>
-    </div>
-    <div class="form-row">
+      <div class="form-group" id="rankGroup">
+        <label class="form-label">الترتيب (للمقبولين)</label>
+        <select class="form-select" id="fRank">
+          <option value="🥇 المركز الأول">🥇 المركز الأول</option>
+          <option value="🥈 المركز الثاني">🥈 المركز الثاني</option>
+          <option value="🥉 المركز الثالث">🥉 المركز الثالث</option>
+          <option value="">بدون ترتيب</option>
+        </select>
+      </div>
       <div class="form-group">
-        <label class="form-label">الساعات اليومية</label>
-        <input class="form-input" id="fHours" placeholder="مثال: 13 ساعة">
+        <label class="form-label">السبب / الملاحظة</label>
+        <textarea class="form-textarea" id="fReason" placeholder="اكتب سبب القبول أو الرفض..."></textarea>
       </div>
-      <div class="form-group">
-        <label class="form-label">الخبرة السابقة</label>
-        <input class="form-input" id="fExp" placeholder="مثال: سيرفر X و Y">
-      </div>
+      <button class="save-btn" onclick="addEntry()">💾 إضافة</button>
+      <div class="success-msg" id="successMsg">✅ تمت الإضافة بنجاح!</div>
     </div>
-    <div class="form-group">
-      <label class="form-label">الحالة</label>
-      <select class="form-select" id="fStatus" onchange="toggleRank()">
-        <option value="accepted">✅ مقبول</option>
-        <option value="rejected">❌ مرفوض</option>
-        <option value="duplicate">⚠️ مكرر / محذوف</option>
-      </select>
-    </div>
-    <div class="form-group" id="rankGroup">
-      <label class="form-label">الترتيب (للمقبولين)</label>
-      <select class="form-select" id="fRank">
-        <option value="🥇 المركز الأول">🥇 المركز الأول</option>
-        <option value="🥈 المركز الثاني">🥈 المركز الثاني</option>
-        <option value="🥉 المركز الثالث">🥉 المركز الثالث</option>
-        <option value="">بدون ترتيب</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label class="form-label">السبب / الملاحظة</label>
-      <textarea class="form-textarea" id="fReason" placeholder="اكتب سبب القبول أو الرفض..."></textarea>
-    </div>
-    <button class="save-btn" onclick="addEntry()">💾 إضافة</button>
-    <div class="success-msg" id="successMsg">✅ تمت الإضافة بنجاح!</div>
-  </div>
 
-  <div class="admin-section">
-    <h3>📋 إدارة التقديمات الحالية</h3>
-    <div class="entry-list" id="adminEntryList"><div class="empty-msg">جاري التحميل...</div></div>
+    <div class="admin-section">
+      <h3>📋 إدارة التقديمات الحالية</h3>
+      <div class="entry-list" id="adminEntryList"><div class="empty-msg">جاري التحميل...</div></div>
+    </div>
   </div>
 </div>
 
-<!-- FIREBASE SDK -->
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
@@ -336,7 +398,6 @@
   const PASSWORD = 'abas6_';
   let entries = [];
 
-  // REALTIME LISTENER
   onValue(entriesRef, (snapshot) => {
     entries = [];
     snapshot.forEach((child) => {
@@ -365,22 +426,15 @@
 
   function checkPass() {
     const val = document.getElementById('passInput').value;
-    if (val === PASSWORD) {
-      closeLogin();
-      openAdmin();
-    } else {
+    if (val === PASSWORD) { closeLogin(); openAdmin(); }
+    else {
       document.getElementById('passErr').style.display = 'block';
       document.getElementById('passInput').value = '';
     }
   }
 
-  function openAdmin() {
-    document.getElementById('adminPanel').classList.add('show');
-  }
-
-  function closeAdmin() {
-    document.getElementById('adminPanel').classList.remove('show');
-  }
+  function openAdmin() { document.getElementById('adminPanel').classList.add('show'); }
+  function closeAdmin() { document.getElementById('adminPanel').classList.remove('show'); }
 
   async function addEntry() {
     const username = document.getElementById('fUsername').value.trim();
@@ -388,19 +442,15 @@
     const hours = document.getElementById('fHours').value.trim();
     const exp = document.getElementById('fExp').value.trim();
     const status = document.getElementById('fStatus').value;
-    const rank = document.getElementById('fRank').value;
+    const rank = status === 'accepted' ? document.getElementById('fRank').value : '';
     const reason = document.getElementById('fReason').value.trim();
-
     if (!username) { alert('اكتب اسم اليوزر!'); return; }
-
     await push(entriesRef, { username, age, hours, exp, status, rank, reason, createdAt: Date.now() });
-
     document.getElementById('fUsername').value = '';
     document.getElementById('fAge').value = '';
     document.getElementById('fHours').value = '';
     document.getElementById('fExp').value = '';
     document.getElementById('fReason').value = '';
-
     const msg = document.getElementById('successMsg');
     msg.style.display = 'block';
     setTimeout(() => msg.style.display = 'none', 2500);
@@ -415,12 +465,10 @@
     const accepted = entries.filter(e => e.status === 'accepted');
     const rejected = entries.filter(e => e.status === 'rejected');
     const duplicates = entries.filter(e => e.status === 'duplicate');
-
     document.getElementById('statAccepted').textContent = accepted.length;
     document.getElementById('statRejected').textContent = rejected.length;
     document.getElementById('statDuplicate').textContent = duplicates.length;
     document.getElementById('totalBadge').textContent = entries.length + ' تقديم';
-
     renderSection('acceptedCards', accepted, 'accepted');
     renderSection('rejectedCards', rejected, 'rejected');
     renderSection('duplicateCards', duplicates, 'duplicate');
@@ -435,12 +483,8 @@
     const badgeClass = { accepted: 'badge-accepted', rejected: 'badge-rejected', duplicate: 'badge-duplicate' };
     const badgeText = { accepted: '✅ مقبول', rejected: '❌ مرفوض', duplicate: '⚠️ مكرر' };
     const reasonBorderClass = { accepted: '', rejected: 'red', duplicate: 'gold-border' };
-
     container.innerHTML = list.map((e, i) => {
-      const rc = type === 'accepted'
-        ? (i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '')
-        : type === 'rejected' ? 'rejected' : 'silver';
-
+      const rc = type === 'accepted' ? (i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '') : type === 'rejected' ? 'rejected' : 'silver';
       return `
       <div class="card ${rc}">
         ${e.rank ? `<div class="card-rank">${e.rank}</div>` : ''}
@@ -460,10 +504,7 @@
 
   function renderAdminList() {
     const container = document.getElementById('adminEntryList');
-    if (entries.length === 0) {
-      container.innerHTML = '<div class="empty-msg">لا توجد تقديمات بعد</div>';
-      return;
-    }
+    if (entries.length === 0) { container.innerHTML = '<div class="empty-msg">لا توجد تقديمات بعد</div>'; return; }
     const statusText = { accepted: '✅ مقبول', rejected: '❌ مرفوض', duplicate: '⚠️ مكرر' };
     container.innerHTML = entries.map(e => `
       <div class="entry-item">
@@ -471,18 +512,17 @@
           <div class="entry-name">${e.username}</div>
           <div class="entry-meta">${statusText[e.status] || ''} ${e.rank ? '· ' + e.rank : ''} ${e.age ? '· عمره ' + e.age : ''}</div>
         </div>
-        <button class="del-btn" onclick="window._deleteEntry('${e.id}')">🗑 حذف</button>
+        <button class="del-btn" onclick="window._del('${e.id}')">🗑 حذف</button>
       </div>`).join('');
   }
 
-  // Expose functions to global scope
   window.openLogin = openLogin;
   window.closeLogin = closeLogin;
   window.checkPass = checkPass;
   window.closeAdmin = closeAdmin;
   window.addEntry = addEntry;
   window.toggleRank = toggleRank;
-  window._deleteEntry = deleteEntry;
+  window._del = deleteEntry;
 </script>
 </body>
 </html> 
