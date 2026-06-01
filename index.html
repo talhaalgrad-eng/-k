@@ -25,18 +25,8 @@
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { font-size: 16px; }
   body { font-family: 'Tajawal', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
-  .header {
-    background: linear-gradient(135deg, #0f0f1a 0%, #1a1030 100%);
-    border-bottom: 1px solid var(--border);
-    padding: clamp(12px, 3vw, 24px) clamp(16px, 4vw, 40px);
-    display: flex; align-items: center; justify-content: space-between;
-    position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); gap: 10px;
-  }
-  .header h1 {
-    font-size: clamp(15px, 3.5vw, 22px); font-weight: 800;
-    background: linear-gradient(90deg, var(--accent), var(--gold));
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 1px; white-space: nowrap;
-  }
+  .header { background: linear-gradient(135deg, #0f0f1a 0%, #1a1030 100%); border-bottom: 1px solid var(--border); padding: clamp(12px,3vw,24px) clamp(16px,4vw,40px); display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; backdrop-filter: blur(10px); gap: 10px; }
+  .header h1 { font-size: clamp(15px,3.5vw,22px); font-weight: 800; background: linear-gradient(90deg, var(--accent), var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; letter-spacing: 1px; white-space: nowrap; }
   .header-badge { background: var(--accent2); color: white; padding: clamp(4px,1vw,6px) clamp(10px,2vw,16px); border-radius: 20px; font-size: clamp(11px,2.5vw,13px); font-weight: 700; white-space: nowrap; }
   .main { max-width: 1100px; margin: 0 auto; padding: clamp(20px,4vw,40px) clamp(12px,3vw,20px) 120px; }
   .stats-row { display: grid; grid-template-columns: repeat(3,1fr); gap: clamp(10px,2vw,16px); margin-bottom: clamp(24px,4vw,40px); }
@@ -56,35 +46,45 @@
   .card-rank { font-size: clamp(20px,4vw,28px); font-weight:900; margin-bottom:4px; }
   .gold .card-rank { color: var(--gold); } .silver .card-rank { color: var(--silver); } .bronze .card-rank { color: var(--bronze); }
   .card-username { font-size: clamp(14px,3vw,17px); font-weight:800; margin-bottom:14px; color:white; display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
-  .status-badge { font-size: clamp(10px,2vw,11px); font-weight:700; padding:3px 10px; border-radius:20px; letter-spacing:0.5px; }
+  .status-badge { font-size: clamp(10px,2vw,11px); font-weight:700; padding:3px 10px; border-radius:20px; }
   .badge-accepted { background:rgba(72,187,120,0.2); color:var(--green); border:1px solid rgba(72,187,120,0.3); }
   .badge-rejected { background:rgba(252,92,92,0.15); color:var(--red); border:1px solid rgba(252,92,92,0.3); }
   .badge-duplicate { background:rgba(240,180,41,0.15); color:var(--gold); border:1px solid rgba(240,180,41,0.3); }
   .card-info { display:flex; flex-direction:column; gap:8px; }
   .card-info-row { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
   .card-info-label { font-weight:700; color:var(--accent); white-space:nowrap; font-size:clamp(11px,2vw,12px); }
-  .card-info-value { color:var(--text); font-size:clamp(12px,2.5vw,13px); line-height:1.5; text-align:left; }
+  .card-info-value { color:var(--text); font-size:clamp(12px,2.5vw,13px); line-height:1.5; }
   .reason-box { margin-top:14px; background:var(--surface2); border-radius:10px; padding:clamp(10px,2vw,12px); font-size:clamp(12px,2.5vw,13px); line-height:1.7; color:var(--text); border-right:3px solid var(--accent); }
-  .reason-box.red { border-right-color: var(--red); } .reason-box.gold-border { border-right-color: var(--gold); }
+  .reason-box.red { border-right-color:var(--red); } .reason-box.gold-border { border-right-color:var(--gold); }
   .reason-title { font-size:11px; font-weight:800; letter-spacing:1px; color:var(--muted); margin-bottom:6px; text-transform:uppercase; }
-  .admin-float-btn { position:fixed; bottom:clamp(16px,4vw,30px); left:50%; transform:translateX(-50%); background:linear-gradient(135deg,var(--accent2),var(--accent)); color:white; border:none; padding:clamp(12px,2.5vw,14px) clamp(24px,5vw,36px); border-radius:50px; font-family:'Tajawal',sans-serif; font-size:clamp(13px,3vw,15px); font-weight:800; cursor:pointer; box-shadow:0 8px 30px rgba(124,92,191,0.5); transition:all 0.3s; letter-spacing:1px; z-index:200; white-space:nowrap; }
-  .admin-float-btn:hover { transform:translateX(-50%) translateY(-3px); box-shadow:0 12px 40px rgba(124,92,191,0.7); }
+  .admin-float-btn { position:fixed; bottom:clamp(16px,4vw,30px); left:50%; transform:translateX(-50%); background:linear-gradient(135deg,var(--accent2),var(--accent)); color:white; border:none; padding:clamp(12px,2.5vw,14px) clamp(24px,5vw,36px); border-radius:50px; font-family:'Tajawal',sans-serif; font-size:clamp(13px,3vw,15px); font-weight:800; cursor:pointer; box-shadow:0 8px 30px rgba(124,92,191,0.5); transition:all 0.3s; z-index:200; white-space:nowrap; }
+  .admin-float-btn:hover { transform:translateX(-50%) translateY(-3px); }
   .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); backdrop-filter:blur(6px); z-index:300; align-items:center; justify-content:center; padding:16px; }
   .modal-overlay.show { display:flex; }
-  .modal { background:var(--surface); border:1px solid var(--border); border-radius:clamp(14px,3vw,20px); padding:clamp(24px,5vw,36px); width:100%; max-width:500px; box-shadow:0 30px 80px rgba(0,0,0,0.6); animation:modalIn 0.3s ease; }
+  .modal { background:var(--surface); border:1px solid var(--border); border-radius:clamp(14px,3vw,20px); padding:clamp(24px,5vw,36px); width:100%; max-width:460px; box-shadow:0 30px 80px rgba(0,0,0,0.6); animation:modalIn 0.3s ease; }
   @keyframes modalIn { from{opacity:0;transform:scale(0.92) translateY(20px)} to{opacity:1;transform:scale(1) translateY(0)} }
-  .modal h2 { font-size:clamp(17px,4vw,20px); font-weight:800; margin-bottom:8px; color:white; }
-  .modal p { color:var(--muted); font-size:clamp(13px,3vw,14px); margin-bottom:20px; }
-  .modal-input { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:clamp(10px,2.5vw,12px) 16px; color:white; font-family:'Tajawal',sans-serif; font-size:clamp(14px,3vw,15px); margin-bottom:12px; outline:none; transition:border-color 0.2s; }
+  .modal h2 { font-size:clamp(17px,4vw,20px); font-weight:800; margin-bottom:6px; color:white; }
+  .modal-sub { color:var(--muted); font-size:13px; margin-bottom:20px; }
+  .modal-input { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:12px 16px; color:white; font-family:'Tajawal',sans-serif; font-size:15px; margin-bottom:12px; outline:none; transition:border-color 0.2s; }
   .modal-input:focus { border-color:var(--accent); }
-  .modal-input::placeholder { color: var(--muted); }
+  .modal-input::placeholder { color:var(--muted); }
+  .otp-input { text-align:center; letter-spacing:8px; font-size:22px; font-weight:800; }
   .modal-err { color:var(--red); font-size:13px; margin-bottom:12px; display:none; text-align:center; padding:10px; background:rgba(252,92,92,0.1); border-radius:8px; }
   .modal-btns { display:flex; gap:10px; margin-top:4px; }
-  .btn-primary { flex:1; background:linear-gradient(135deg,var(--accent2),var(--accent)); color:white; border:none; padding:clamp(10px,2.5vw,12px); border-radius:10px; font-family:'Tajawal',sans-serif; font-size:clamp(14px,3vw,15px); font-weight:700; cursor:pointer; transition:opacity 0.2s; }
-  .btn-primary:hover { opacity:0.85; }
-  .btn-primary:disabled { opacity:0.5; cursor:not-allowed; }
-  .btn-cancel { background:var(--surface2); color:var(--muted); border:1px solid var(--border); padding:clamp(10px,2.5vw,12px) clamp(14px,3vw,20px); border-radius:10px; font-family:'Tajawal',sans-serif; font-size:clamp(14px,3vw,15px); cursor:pointer; transition:color 0.2s; }
+  .btn-primary { flex:1; background:linear-gradient(135deg,var(--accent2),var(--accent)); color:white; border:none; padding:12px; border-radius:10px; font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; cursor:pointer; transition:opacity 0.2s; }
+  .btn-primary:hover { opacity:0.85; } .btn-primary:disabled { opacity:0.5; cursor:not-allowed; }
+  .btn-cancel { background:var(--surface2); color:var(--muted); border:1px solid var(--border); padding:12px 20px; border-radius:10px; font-family:'Tajawal',sans-serif; font-size:15px; cursor:pointer; }
   .btn-cancel:hover { color:white; }
+  .timer-bar-wrap { background:var(--surface2); border-radius:10px; height:6px; margin-bottom:14px; overflow:hidden; }
+  .timer-bar { height:100%; background:linear-gradient(90deg,var(--accent),var(--gold)); border-radius:10px; transition:width 1s linear; width:100%; }
+  .timer-text { text-align:center; font-size:13px; color:var(--muted); margin-bottom:12px; }
+  .timer-text span { color:var(--gold); font-weight:800; font-size:15px; }
+  .resend-btn { width:100%; background:transparent; border:1px dashed var(--border); color:var(--muted); padding:10px; border-radius:10px; font-family:'Tajawal',sans-serif; font-size:13px; cursor:pointer; margin-top:8px; transition:all 0.2s; display:none; }
+  .resend-btn:hover { border-color:var(--accent); color:var(--accent); }
+  .blocked-msg { text-align:center; padding:20px 0; }
+  .blocked-msg .block-icon { font-size:48px; margin-bottom:12px; }
+  .blocked-msg p { color:var(--red); font-weight:700; font-size:15px; }
+  .blocked-msg small { color:var(--muted); font-size:12px; }
   .admin-panel { display:none; position:fixed; inset:0; background:var(--bg); z-index:400; overflow-y:auto; padding:clamp(16px,4vw,30px); animation:slideUp 0.4s ease; }
   @keyframes slideUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
   .admin-panel.show { display:block; }
@@ -92,34 +92,34 @@
   .admin-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:clamp(20px,4vw,30px); padding-bottom:20px; border-bottom:1px solid var(--border); }
   .admin-header h2 { font-size:clamp(17px,4vw,22px); font-weight:900; background:linear-gradient(90deg,var(--gold),var(--accent)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
   .admin-top-bar { display:flex; align-items:center; gap:10px; }
-  .logout-btn { background:rgba(252,92,92,0.15); border:1px solid rgba(252,92,92,0.3); color:var(--red); padding:8px 16px; border-radius:10px; font-family:'Tajawal',sans-serif; font-size:13px; font-weight:700; cursor:pointer; transition:background 0.2s; }
+  .logout-btn { background:rgba(252,92,92,0.15); border:1px solid rgba(252,92,92,0.3); color:var(--red); padding:8px 16px; border-radius:10px; font-family:'Tajawal',sans-serif; font-size:13px; font-weight:700; cursor:pointer; }
   .logout-btn:hover { background:rgba(252,92,92,0.3); }
-  .close-btn { background:var(--surface2); border:1px solid var(--border); color:var(--muted); width:clamp(34px,6vw,40px); height:clamp(34px,6vw,40px); border-radius:50%; font-size:clamp(15px,3vw,18px); cursor:pointer; transition:color 0.2s; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+  .close-btn { background:var(--surface2); border:1px solid var(--border); color:var(--muted); width:40px; height:40px; border-radius:50%; font-size:18px; cursor:pointer; display:flex; align-items:center; justify-content:center; }
   .close-btn:hover { color:white; }
   .admin-section { background:var(--surface); border:1px solid var(--border); border-radius:clamp(12px,2.5vw,16px); padding:clamp(18px,4vw,24px); margin-bottom:20px; }
   .admin-section h3 { font-size:clamp(12px,2.5vw,15px); font-weight:800; color:var(--accent); margin-bottom:clamp(14px,3vw,20px); letter-spacing:1px; text-transform:uppercase; }
-  .form-group { margin-bottom:clamp(12px,2.5vw,16px); }
-  .form-label { display:block; font-size:clamp(10px,2vw,12px); font-weight:700; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
-  .form-input,.form-select,.form-textarea { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:clamp(9px,2vw,10px) 14px; color:white; font-family:'Tajawal',sans-serif; font-size:clamp(13px,2.5vw,14px); outline:none; transition:border-color 0.2s; }
+  .form-group { margin-bottom:14px; }
+  .form-label { display:block; font-size:11px; font-weight:700; color:var(--muted); margin-bottom:6px; text-transform:uppercase; letter-spacing:1px; }
+  .form-input,.form-select,.form-textarea { width:100%; background:var(--bg); border:1px solid var(--border); border-radius:10px; padding:10px 14px; color:white; font-family:'Tajawal',sans-serif; font-size:14px; outline:none; transition:border-color 0.2s; }
   .form-input:focus,.form-select:focus,.form-textarea:focus { border-color:var(--accent); }
   .form-select option { background:var(--surface); }
   .form-textarea { min-height:80px; resize:vertical; line-height:1.6; }
-  .form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:clamp(10px,2vw,14px); }
-  .save-btn { background:linear-gradient(135deg,var(--accent2),var(--accent)); color:white; border:none; padding:clamp(11px,2.5vw,12px) 30px; border-radius:10px; font-family:'Tajawal',sans-serif; font-size:clamp(14px,3vw,15px); font-weight:700; cursor:pointer; transition:opacity 0.2s; width:100%; margin-top:8px; }
+  .form-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; }
+  .save-btn { background:linear-gradient(135deg,var(--accent2),var(--accent)); color:white; border:none; padding:12px 30px; border-radius:10px; font-family:'Tajawal',sans-serif; font-size:15px; font-weight:700; cursor:pointer; width:100%; margin-top:8px; }
   .save-btn:hover { opacity:0.85; }
-  .success-msg { display:none; background:rgba(72,187,120,0.15); border:1px solid rgba(72,187,120,0.3); color:var(--green); padding:12px; border-radius:10px; text-align:center; font-weight:700; font-size:clamp(13px,2.5vw,14px); margin-top:10px; }
+  .success-msg { display:none; background:rgba(72,187,120,0.15); border:1px solid rgba(72,187,120,0.3); color:var(--green); padding:12px; border-radius:10px; text-align:center; font-weight:700; font-size:14px; margin-top:10px; }
   .entry-list { display:flex; flex-direction:column; gap:10px; }
-  .entry-item { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:clamp(12px,2.5vw,14px) clamp(14px,3vw,18px); display:flex; align-items:center; justify-content:space-between; gap:10px; }
-  .entry-name { font-weight:800; font-size:clamp(13px,3vw,15px); }
-  .entry-meta { font-size:clamp(11px,2vw,12px); color:var(--muted); margin-top:2px; }
-  .del-btn { background:rgba(252,92,92,0.15); border:1px solid rgba(252,92,92,0.3); color:var(--red); padding:clamp(5px,1.5vw,6px) clamp(10px,2.5vw,14px); border-radius:8px; font-family:'Tajawal',sans-serif; font-size:clamp(12px,2.5vw,13px); font-weight:700; cursor:pointer; transition:background 0.2s; white-space:nowrap; flex-shrink:0; }
+  .entry-item { background:var(--bg); border:1px solid var(--border); border-radius:12px; padding:14px 18px; display:flex; align-items:center; justify-content:space-between; gap:10px; }
+  .entry-name { font-weight:800; font-size:15px; }
+  .entry-meta { font-size:12px; color:var(--muted); margin-top:2px; }
+  .del-btn { background:rgba(252,92,92,0.15); border:1px solid rgba(252,92,92,0.3); color:var(--red); padding:6px 14px; border-radius:8px; font-family:'Tajawal',sans-serif; font-size:13px; font-weight:700; cursor:pointer; white-space:nowrap; flex-shrink:0; }
   .del-btn:hover { background:rgba(252,92,92,0.3); }
-  .empty-msg { text-align:center; color:var(--muted); font-size:clamp(13px,2.5vw,14px); padding:20px; }
+  .empty-msg { text-align:center; color:var(--muted); font-size:14px; padding:20px; }
   .loading-overlay { position:fixed; inset:0; background:var(--bg); z-index:999; display:flex; align-items:center; justify-content:center; flex-direction:column; gap:16px; }
   .spinner { width:44px; height:44px; border:4px solid var(--border); border-top-color:var(--accent); border-radius:50%; animation:spin 0.8s linear infinite; }
+  .btn-spinner { width:16px; height:16px; border:3px solid rgba(255,255,255,0.3); border-top-color:white; border-radius:50%; animation:spin 0.8s linear infinite; display:inline-block; vertical-align:middle; margin-left:6px; }
   @keyframes spin { to{transform:rotate(360deg)} }
   .loading-text { color:var(--muted); font-size:14px; font-weight:600; }
-  .login-spinner { width:18px; height:18px; border:3px solid rgba(255,255,255,0.3); border-top-color:white; border-radius:50%; animation:spin 0.8s linear infinite; display:inline-block; margin-left:8px; vertical-align:middle; }
   ::-webkit-scrollbar { width:5px; } ::-webkit-scrollbar-track { background:var(--bg); } ::-webkit-scrollbar-thumb { background:var(--border); border-radius:3px; }
   @media (hover:none) { .card:hover{transform:none;box-shadow:none} .admin-float-btn:hover{transform:translateX(-50%)} }
   @media (max-width:360px) { .stats-row{grid-template-columns:1fr} .modal-btns{flex-direction:column} }
@@ -151,19 +151,45 @@
   <div class="cards-grid" id="duplicateCards"><div class="empty-msg" style="grid-column:1/-1;">جاري التحميل...</div></div>
 </div>
 
-<button class="admin-float-btn" onclick="openLogin()">🔐 Admin Panel</button>
+<button class="admin-float-btn" onclick="startLogin()">🔐 Admin Panel</button>
 
-<!-- LOGIN MODAL -->
+<!-- STEP 1: EMAIL/PASS LOGIN -->
 <div class="modal-overlay" id="loginModal">
   <div class="modal">
     <h2>🔐 تسجيل الدخول</h2>
-    <p>أدخل بيانات الأدمن للدخول</p>
+    <div class="modal-sub">أدخل بيانات الأدمن</div>
     <input class="modal-input" type="email" id="emailInput" placeholder="الإيميل">
     <input class="modal-input" type="password" id="passInput" placeholder="كلمة السر" onkeydown="if(event.key==='Enter')doLogin()">
-    <div class="modal-err" id="loginErr">❌ الإيميل أو كلمة السر غلط</div>
+    <div class="modal-err" id="loginErr"></div>
     <div class="modal-btns">
       <button class="btn-primary" id="loginBtn" onclick="doLogin()">دخول</button>
-      <button class="btn-cancel" onclick="closeLogin()">إلغاء</button>
+      <button class="btn-cancel" onclick="closeAll()">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- STEP 2: OTP -->
+<div class="modal-overlay" id="otpModal">
+  <div class="modal">
+    <div id="otpContent">
+      <h2>📧 رمز التحقق</h2>
+      <div class="modal-sub">تم إرسال رمز على بريدك — أدخله قبل انتهاء الوقت</div>
+      <div class="timer-bar-wrap"><div class="timer-bar" id="timerBar"></div></div>
+      <div class="timer-text">الوقت المتبقي: <span id="timerNum">30</span> ثانية</div>
+      <input class="modal-input otp-input" type="text" id="otpInput" maxlength="10" placeholder="- - - - - - - - - -" onkeydown="if(event.key==='Enter')verifyOtp()">
+      <div class="modal-err" id="otpErr"></div>
+      <div class="modal-btns">
+        <button class="btn-primary" id="verifyBtn" onclick="verifyOtp()">تحقق</button>
+        <button class="btn-cancel" onclick="closeAll()">إلغاء</button>
+      </div>
+      <button class="resend-btn" id="resendBtn" onclick="resendOtp()">🔄 إعادة إرسال رمز جديد</button>
+    </div>
+    <div id="blockedContent" style="display:none;">
+      <div class="blocked-msg">
+        <div class="block-icon">🚫</div>
+        <p>تم حظرك بسبب كثرة المحاولات الخاطئة</p>
+        <small>أغلق الصفحة وحاول لاحقاً</small>
+      </div>
     </div>
   </div>
 </div>
@@ -178,39 +204,24 @@
         <button class="close-btn" onclick="closeAdmin()">✕</button>
       </div>
     </div>
-
     <div class="admin-section">
       <h3>➕ إضافة تقديم</h3>
       <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">اسم اليوزر في روبلوكس</label>
-          <input class="form-input" id="fUsername" placeholder="مثال: GN_NWAF4">
-        </div>
-        <div class="form-group">
-          <label class="form-label">العمر</label>
-          <input class="form-input" id="fAge" placeholder="مثال: 22" type="number">
-        </div>
+        <div class="form-group"><label class="form-label">اسم اليوزر</label><input class="form-input" id="fUsername" placeholder="مثال: GN_NWAF4"></div>
+        <div class="form-group"><label class="form-label">العمر</label><input class="form-input" id="fAge" type="number" placeholder="مثال: 22"></div>
       </div>
       <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">الساعات اليومية</label>
-          <input class="form-input" id="fHours" placeholder="مثال: 13 ساعة">
-        </div>
-        <div class="form-group">
-          <label class="form-label">الخبرة السابقة</label>
-          <input class="form-input" id="fExp" placeholder="مثال: سيرفر X و Y">
-        </div>
+        <div class="form-group"><label class="form-label">الساعات اليومية</label><input class="form-input" id="fHours" placeholder="مثال: 13 ساعة"></div>
+        <div class="form-group"><label class="form-label">الخبرة السابقة</label><input class="form-input" id="fExp" placeholder="مثال: سيرفر X"></div>
       </div>
-      <div class="form-group">
-        <label class="form-label">الحالة</label>
+      <div class="form-group"><label class="form-label">الحالة</label>
         <select class="form-select" id="fStatus" onchange="toggleRank()">
           <option value="accepted">✅ مقبول</option>
           <option value="rejected">❌ مرفوض</option>
-          <option value="duplicate">⚠️ مكرر / محذوف</option>
+          <option value="duplicate">⚠️ مكرر</option>
         </select>
       </div>
-      <div class="form-group" id="rankGroup">
-        <label class="form-label">الترتيب (للمقبولين)</label>
+      <div class="form-group" id="rankGroup"><label class="form-label">الترتيب</label>
         <select class="form-select" id="fRank">
           <option value="🥇 المركز الأول">🥇 المركز الأول</option>
           <option value="🥈 المركز الثاني">🥈 المركز الثاني</option>
@@ -218,25 +229,24 @@
           <option value="">بدون ترتيب</option>
         </select>
       </div>
-      <div class="form-group">
-        <label class="form-label">السبب / الملاحظة</label>
-        <textarea class="form-textarea" id="fReason" placeholder="اكتب سبب القبول أو الرفض..."></textarea>
-      </div>
+      <div class="form-group"><label class="form-label">السبب</label><textarea class="form-textarea" id="fReason" placeholder="سبب القبول أو الرفض..."></textarea></div>
       <button class="save-btn" onclick="addEntry()">💾 إضافة</button>
-      <div class="success-msg" id="successMsg">✅ تمت الإضافة بنجاح!</div>
+      <div class="success-msg" id="successMsg">✅ تمت الإضافة!</div>
     </div>
-
     <div class="admin-section">
-      <h3>📋 إدارة التقديمات الحالية</h3>
+      <h3>📋 إدارة التقديمات</h3>
       <div class="entry-list" id="adminEntryList"><div class="empty-msg">جاري التحميل...</div></div>
     </div>
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
   import { getDatabase, ref, push, onValue, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
   import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+  emailjs.init('vwfA2ZofjrqmqDJ0M');
 
   const firebaseConfig = {
     apiKey: "AIzaSyA49e7V9n7e2PzUXfvhj-VrphnG4axFf_I",
@@ -253,27 +263,45 @@
   const auth = getAuth(app);
   const entriesRef = ref(db, 'entries');
 
+  const ADMIN_EMAIL = 'talhaalgrad@gmail.com';
   let entries = [];
-  let currentUser = null;
+  let currentOtp = '';
+  let otpTimer = null;
+  let otpSeconds = 30;
+  let failedAttempts = 0;
+  const MAX_ATTEMPTS = 5;
 
-  // AUTH STATE
-  onAuthStateChanged(auth, (user) => {
-    currentUser = user;
-  });
+  onAuthStateChanged(auth, (user) => {});
 
-  // REALTIME DATA
   onValue(entriesRef, (snapshot) => {
     entries = [];
-    snapshot.forEach((child) => {
-      entries.push({ id: child.key, ...child.val() });
-    });
-    renderAll();
-    renderAdminList();
+    snapshot.forEach(c => entries.push({ id: c.key, ...c.val() }));
+    renderAll(); renderAdminList();
     document.getElementById('loadingOverlay').style.display = 'none';
   });
 
-  // LOGIN
-  function openLogin() {
+  // GENERATE OTP
+  function generateOtp() {
+    const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789';
+    let otp = '';
+    for (let i = 0; i < 10; i++) otp += chars[Math.floor(Math.random() * chars.length)];
+    return otp;
+  }
+
+  // SEND OTP EMAIL
+  async function sendOtp() {
+    currentOtp = generateOtp();
+    const now = new Date();
+    now.setSeconds(now.getSeconds() + 30);
+    const timeStr = now.toLocaleTimeString('ar-SA');
+    await emailjs.send('service_4sbauga', 'template_yiewozt', {
+      code: currentOtp,
+      time: timeStr
+    });
+  }
+
+  // START LOGIN FLOW
+  function startLogin() {
     document.getElementById('loginModal').classList.add('show');
     document.getElementById('emailInput').value = '';
     document.getElementById('passInput').value = '';
@@ -281,42 +309,126 @@
     setTimeout(() => document.getElementById('emailInput').focus(), 100);
   }
 
-  function closeLogin() {
-    document.getElementById('loginModal').classList.remove('show');
-  }
-
+  // STEP 1: VERIFY EMAIL + PASS
   async function doLogin() {
     const email = document.getElementById('emailInput').value.trim();
     const pass = document.getElementById('passInput').value;
     const btn = document.getElementById('loginBtn');
     const err = document.getElementById('loginErr');
 
-    if (!email || !pass) { err.style.display = 'block'; err.textContent = '❌ أدخل الإيميل وكلمة السر'; return; }
+    if (!email || !pass) { showErr(err, '❌ أدخل الإيميل وكلمة السر'); return; }
 
     btn.disabled = true;
-    btn.innerHTML = 'جاري الدخول <span class="login-spinner"></span>';
+    btn.innerHTML = 'جاري التحقق <span class="btn-spinner"></span>';
     err.style.display = 'none';
 
     try {
       await signInWithEmailAndPassword(auth, email, pass);
-      closeLogin();
-      openAdmin();
+      // SUCCESS — send OTP
+      btn.innerHTML = 'جاري إرسال الرمز <span class="btn-spinner"></span>';
+      await sendOtp();
+      document.getElementById('loginModal').classList.remove('show');
+      showOtpModal();
     } catch (e) {
-      err.style.display = 'block';
-      err.textContent = '❌ الإيميل أو كلمة السر غلط';
+      showErr(err, '❌ الإيميل أو كلمة السر غلط');
     } finally {
       btn.disabled = false;
       btn.innerHTML = 'دخول';
     }
   }
 
-  async function doLogout() {
-    await signOut(auth);
-    closeAdmin();
+  // SHOW OTP MODAL + START TIMER
+  function showOtpModal() {
+    failedAttempts = 0;
+    document.getElementById('otpContent').style.display = 'block';
+    document.getElementById('blockedContent').style.display = 'none';
+    document.getElementById('otpModal').classList.add('show');
+    document.getElementById('otpInput').value = '';
+    document.getElementById('otpErr').style.display = 'none';
+    document.getElementById('resendBtn').style.display = 'none';
+    startTimer();
+  }
+
+  // TIMER
+  function startTimer() {
+    clearInterval(otpTimer);
+    otpSeconds = 30;
+    updateTimer();
+    otpTimer = setInterval(() => {
+      otpSeconds--;
+      updateTimer();
+      if (otpSeconds <= 0) {
+        clearInterval(otpTimer);
+        document.getElementById('timerBar').style.width = '0%';
+        document.getElementById('timerNum').textContent = '0';
+        document.getElementById('verifyBtn').disabled = true;
+        document.getElementById('resendBtn').style.display = 'block';
+        showErr(document.getElementById('otpErr'), '⏰ انتهى الوقت — أرسل رمزاً جديداً');
+      }
+    }, 1000);
+  }
+
+  function updateTimer() {
+    document.getElementById('timerNum').textContent = otpSeconds;
+    document.getElementById('timerBar').style.width = (otpSeconds / 30 * 100) + '%';
+    if (otpSeconds <= 10) document.getElementById('timerBar').style.background = 'var(--red)';
+    else document.getElementById('timerBar').style.background = 'linear-gradient(90deg, var(--accent), var(--gold))';
+  }
+
+  // VERIFY OTP
+  function verifyOtp() {
+    const input = document.getElementById('otpInput').value.trim().toUpperCase();
+    const err = document.getElementById('otpErr');
+
+    if (!input) { showErr(err, '❌ أدخل الرمز'); return; }
+    if (otpSeconds <= 0) { showErr(err, '⏰ انتهى الوقت — أرسل رمزاً جديداً'); return; }
+
+    if (input === currentOtp) {
+      clearInterval(otpTimer);
+      document.getElementById('otpModal').classList.remove('show');
+      openAdmin();
+    } else {
+      failedAttempts++;
+      if (failedAttempts >= MAX_ATTEMPTS) {
+        clearInterval(otpTimer);
+        document.getElementById('otpContent').style.display = 'none';
+        document.getElementById('blockedContent').style.display = 'block';
+        return;
+      }
+      showErr(err, `❌ رمز خاطئ — تبقى لك ${MAX_ATTEMPTS - failedAttempts} محاولة`);
+      document.getElementById('otpInput').value = '';
+    }
+  }
+
+  // RESEND OTP
+  async function resendOtp() {
+    const btn = document.getElementById('resendBtn');
+    btn.disabled = true;
+    btn.textContent = 'جاري الإرسال...';
+    document.getElementById('otpErr').style.display = 'none';
+    document.getElementById('verifyBtn').disabled = false;
+    await sendOtp();
+    btn.style.display = 'none';
+    btn.disabled = false;
+    btn.textContent = '🔄 إعادة إرسال رمز جديد';
+    document.getElementById('otpInput').value = '';
+    document.getElementById('timerBar').style.background = 'linear-gradient(90deg, var(--accent), var(--gold))';
+    startTimer();
+  }
+
+  function showErr(el, msg) {
+    el.textContent = msg;
+    el.style.display = 'block';
+  }
+
+  function closeAll() {
+    clearInterval(otpTimer);
+    document.getElementById('loginModal').classList.remove('show');
+    document.getElementById('otpModal').classList.remove('show');
+    if (auth.currentUser) signOut(auth);
   }
 
   function openAdmin() {
-    if (!auth.currentUser) { openLogin(); return; }
     document.getElementById('adminPanel').classList.add('show');
   }
 
@@ -324,13 +436,18 @@
     document.getElementById('adminPanel').classList.remove('show');
   }
 
+  async function doLogout() {
+    await signOut(auth);
+    closeAdmin();
+  }
+
   function toggleRank() {
-    const status = document.getElementById('fStatus').value;
-    document.getElementById('rankGroup').style.display = status === 'accepted' ? 'block' : 'none';
+    document.getElementById('rankGroup').style.display =
+      document.getElementById('fStatus').value === 'accepted' ? 'block' : 'none';
   }
 
   async function addEntry() {
-    if (!auth.currentUser) { alert('يجب تسجيل الدخول أولاً'); return; }
+    if (!auth.currentUser) { alert('يجب تسجيل الدخول'); return; }
     const username = document.getElementById('fUsername').value.trim();
     const age = document.getElementById('fAge').value.trim();
     const hours = document.getElementById('fHours').value.trim();
@@ -340,18 +457,14 @@
     const reason = document.getElementById('fReason').value.trim();
     if (!username) { alert('اكتب اسم اليوزر!'); return; }
     await push(entriesRef, { username, age, hours, exp, status, rank, reason, createdAt: Date.now() });
-    document.getElementById('fUsername').value = '';
-    document.getElementById('fAge').value = '';
-    document.getElementById('fHours').value = '';
-    document.getElementById('fExp').value = '';
-    document.getElementById('fReason').value = '';
+    ['fUsername','fAge','fHours','fExp','fReason'].forEach(id => document.getElementById(id).value = '');
     const msg = document.getElementById('successMsg');
     msg.style.display = 'block';
     setTimeout(() => msg.style.display = 'none', 2500);
   }
 
   async function deleteEntry(id) {
-    if (!auth.currentUser) { alert('يجب تسجيل الدخول أولاً'); return; }
+    if (!auth.currentUser) { alert('يجب تسجيل الدخول'); return; }
     if (!confirm('تأكيد الحذف؟')) return;
     await remove(ref(db, 'entries/' + id));
   }
@@ -371,45 +484,43 @@
 
   function renderSection(containerId, list, type) {
     const container = document.getElementById(containerId);
-    if (list.length === 0) { container.innerHTML = '<div class="empty-msg" style="grid-column:1/-1;">لا يوجد بيانات</div>'; return; }
+    if (!list.length) { container.innerHTML = '<div class="empty-msg" style="grid-column:1/-1;">لا يوجد بيانات</div>'; return; }
     const badgeClass = { accepted:'badge-accepted', rejected:'badge-rejected', duplicate:'badge-duplicate' };
     const badgeText = { accepted:'✅ مقبول', rejected:'❌ مرفوض', duplicate:'⚠️ مكرر' };
-    const reasonBorderClass = { accepted:'', rejected:'red', duplicate:'gold-border' };
+    const reasonBorder = { accepted:'', rejected:'red', duplicate:'gold-border' };
     container.innerHTML = list.map((e, i) => {
-      const rc = type === 'accepted' ? (i===0?'gold':i===1?'silver':i===2?'bronze':'') : type==='rejected'?'rejected':'silver';
-      return `
-      <div class="card ${rc}">
-        ${e.rank ? `<div class="card-rank">${e.rank}</div>` : ''}
+      const rc = type==='accepted'?(i===0?'gold':i===1?'silver':i===2?'bronze':''):type==='rejected'?'rejected':'silver';
+      return `<div class="card ${rc}">
+        ${e.rank?`<div class="card-rank">${e.rank}</div>`:''}
         <div class="card-username">${e.username}<span class="status-badge ${badgeClass[type]}">${badgeText[type]}</span></div>
         <div class="card-info">
-          ${e.age ? `<div class="card-info-row"><span class="card-info-label">العمر</span><span class="card-info-value">${e.age} سنة</span></div>` : ''}
-          ${e.hours ? `<div class="card-info-row"><span class="card-info-label">الساعات</span><span class="card-info-value">${e.hours}</span></div>` : ''}
-          ${e.exp ? `<div class="card-info-row"><span class="card-info-label">الخبرة</span><span class="card-info-value">${e.exp}</span></div>` : ''}
+          ${e.age?`<div class="card-info-row"><span class="card-info-label">العمر</span><span class="card-info-value">${e.age} سنة</span></div>`:''}
+          ${e.hours?`<div class="card-info-row"><span class="card-info-label">الساعات</span><span class="card-info-value">${e.hours}</span></div>`:''}
+          ${e.exp?`<div class="card-info-row"><span class="card-info-label">الخبرة</span><span class="card-info-value">${e.exp}</span></div>`:''}
         </div>
-        ${e.reason ? `<div class="reason-box ${reasonBorderClass[type]}"><div class="reason-title">${type==='accepted'?'سبب القبول':type==='rejected'?'سبب الرفض':'الملاحظة'}</div>${e.reason}</div>` : ''}
+        ${e.reason?`<div class="reason-box ${reasonBorder[type]}"><div class="reason-title">${type==='accepted'?'سبب القبول':type==='rejected'?'سبب الرفض':'الملاحظة'}</div>${e.reason}</div>`:''}
       </div>`;
     }).join('');
   }
 
   function renderAdminList() {
     const container = document.getElementById('adminEntryList');
-    if (entries.length === 0) { container.innerHTML = '<div class="empty-msg">لا توجد تقديمات بعد</div>'; return; }
+    if (!entries.length) { container.innerHTML = '<div class="empty-msg">لا توجد تقديمات بعد</div>'; return; }
     const statusText = { accepted:'✅ مقبول', rejected:'❌ مرفوض', duplicate:'⚠️ مكرر' };
     container.innerHTML = entries.map(e => `
       <div class="entry-item">
-        <div>
-          <div class="entry-name">${e.username}</div>
-          <div class="entry-meta">${statusText[e.status]||''} ${e.rank?'· '+e.rank:''} ${e.age?'· عمره '+e.age:''}</div>
-        </div>
+        <div><div class="entry-name">${e.username}</div><div class="entry-meta">${statusText[e.status]||''} ${e.rank?'· '+e.rank:''} ${e.age?'· عمره '+e.age:''}</div></div>
         <button class="del-btn" onclick="window._del('${e.id}')">🗑 حذف</button>
       </div>`).join('');
   }
 
-  window.openLogin = openLogin;
-  window.closeLogin = closeLogin;
+  window.startLogin = startLogin;
   window.doLogin = doLogin;
-  window.doLogout = doLogout;
+  window.verifyOtp = verifyOtp;
+  window.resendOtp = resendOtp;
+  window.closeAll = closeAll;
   window.closeAdmin = closeAdmin;
+  window.doLogout = doLogout;
   window.addEntry = addEntry;
   window.toggleRank = toggleRank;
   window._del = deleteEntry;
